@@ -43,15 +43,15 @@ function [ frame_table ] = gdaxfetch(product, start_date, end_date, granularity)
         'VariableName', {'timestamp', 'low', 'high', 'open', 'close', 'volume'})];
     frame_table = fillmissing(frame_table, 'spline');
 
-%% Functions
-function [ dataframe ] = gdaxapi (product, start_date, end_date, granularity)
-    url1 = 'https://api.gdax.com/products/';
-    url4 = '/candles?start=';
-    url2 = '&end=';
-    url3 = '&granularity=';
-    start_date = datestr(start_date, 'yyyy-mm-ddTHH:MM:SS');
-    end_date = datestr(end_date, 'yyyy-mm-ddTHH:MM:SS');
-    website = strcat(url1,product,url4,start_date,url2,end_date,url3,num2str(granularity));
-    dataframe = webread(website);
-end
+    %% Functions
+    function [ dataframe ] = gdaxapi (product, start_date, end_date, granularity)
+        url1 = 'https://api.gdax.com/products/';
+        url4 = '/candles?start=';
+        url2 = '&end=';
+        url3 = '&granularity=';
+        start_date = datestr(start_date, 'yyyy-mm-ddTHH:MM:SS');
+        end_date = datestr(end_date, 'yyyy-mm-ddTHH:MM:SS');
+        website = strcat(url1,product,url4,start_date,url2,end_date,url3,num2str(granularity));
+        dataframe = webread(website);
+    end
 end
